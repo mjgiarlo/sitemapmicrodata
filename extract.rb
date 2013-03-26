@@ -8,8 +8,13 @@ beginning_time = Time.now
 resources_count = 0
 
 Nokogiri::HTML(sitemap_index).xpath('//loc').each do |sitemap_loc|
-  sitemap_gz = open(sitemap_loc)
-  sitemap = Zlib::GzipReader.new( sitemap_gz ).read
+  puts sitemap_loc.text
+  sitemap = open(sitemap_loc)
+  begin
+    sitemap = Zlib::GzipReader.new( sitemap ).read
+  rescue => e
+    sitemap = sitemap.read
+  end
   Nokogiri::HTML(sitemap).xpath('//loc').each do |loc|
     url = loc.content
     open(url) do |f|
@@ -23,4 +28,4 @@ Nokogiri::HTML(sitemap_index).xpath('//loc').each do |sitemap_loc|
 end
 
 puts "Total resources: #{resources_count}"
-puts "Time elapsed #{Time.now - beginning} seconds"
+puts "Time elapsed #{Time.now - beginning_time} seconds"
