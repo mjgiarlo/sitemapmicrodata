@@ -1,9 +1,17 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
     microdata (0.0.3)
       nokogiri
+    multi_json (1.7.2)
+    multipart-post (1.2.0)
     nokogiri (1.5.9)
+    rubberband (0.9.8)
+      faraday (~> 0.8.0)
+      multi_json
+    springboard (0.20.5)
 
 PLATFORMS
   ruby
@@ -11,3 +19,5 @@ PLATFORMS
 DEPENDENCIES
   microdata
   nokogiri
+  rubberband
+  springboard
