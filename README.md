@@ -1,4 +1,4 @@
-```ruby
+```
 $ ruby extract.rb
 {:type=>"http://schema.org/Person",
 :properties=>{"url"=>[#<URI::HTTP:0x8cdeb70 URL:http://d.lib.ncsu.edu/student-leaders/people/blas-phillip-arroyo>],
