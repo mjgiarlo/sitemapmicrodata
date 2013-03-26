@@ -1,19 +1,17 @@
 ```
-$ ruby extract.rb
-{
-"type": [
-      "http://schema.org/Person"
-        ],
-"properties": {
-    "url": [
-         "http://d.lib.ncsu.edu/student-leaders/people/blas-phillip-arroyo"
-           ],
-    "name": [
-          "Blas Arroyo"
-            ],
-    "image": [
-       "http://scrc.lib.ncsu.edu/adore-djatoka/resolver?rft_id=0006598&svc.level=2&svc.region=0%2C0%2C261%2C261&svc_id=info%3Alanl-repo%2Fsvc%2FgetRegion&svc_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajpeg2000&url_ver=Z39.88-2004"
-             ]
-  }
-}
+bundle
 ```
+
+In one terminal start elasticsearch:
+```
+$ springboard -c config -f
+```
+
+In another terminal window run:
+```
+$ ruby extract.rb http://d.lib.ncsu.edu/collections/sal-sitemap.xml
+```
+
+Run elasticsearch-head standalone to start querying the data: <https://github.com/mobz/elasticsearch-head>
+
+Note: ElasticSearch config really isn't set up correctly right now and the data is actually being saved in the same place as the bundle rubberband gem.
