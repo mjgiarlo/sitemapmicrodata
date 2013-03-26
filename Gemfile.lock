@@ -1,0 +1,15 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    blankslate (3.1.2)
+    mida (0.3.3)
+      blankslate
+      nokogiri (>= 1.5)
+    nokogiri (1.5.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mida
+  nokogiri
