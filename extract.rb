@@ -1,9 +1,13 @@
 require 'open-uri'
 require 'nokogiri'
-require 'mida'
+require 'microdata'
 
-sitemap = Nokogiri::HTML(open('http://d.lib.ncsu.edu/student-leaders/sitemap.xml'))
-sitemap.xpath('//loc').each do |loc|
+Nokogiri::HTML(open('http://d.lib.ncsu.edu/student-leaders/sitemap.xml')).xpath('//loc').each do |loc|
   url = loc.content
-  open(url) { |f| puts Mida::Document.new(f, url).items }
+  open(url) do |f|
+    items = Microdata::Document.new(f, url).extract_items
+    items.each do |item|
+      puts JSON.pretty_generate(item.to_hash)
+    end
+  end
 end
